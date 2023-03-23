@@ -142,7 +142,7 @@ function resolvePromise(thenPromise, x, resolve, reject) {
 						// 实现这条需要前面加一个变量 called
 						if (called) return;
 						called = true;
-						resolvePromise(promise, y, resolve, reject);
+						resolvePromise(thenPromise, y, resolve, reject);
 					},
 					// 如果 rejectPromise 以据因 r 为参数被调用，则以据因 r 拒绝 promise
 					(r) => {
@@ -159,6 +159,9 @@ function resolvePromise(thenPromise, x, resolve, reject) {
 				// 否则以 error 为据因拒绝 promise
 				reject(error);
 			}
+		} else {
+			// 如果 then 不是函数，以 x 为参数执行 promise
+			resolve(x);
 		}
 	} else {
 		// 普通值
