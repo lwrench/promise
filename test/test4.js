@@ -1,5 +1,8 @@
-const { MyPromise } = require('../index')
+const MyPromise = require('../index');
 
 const test = new MyPromise((resolve, reject) => {
-  resolve('成功')
-}).then(res => console.log(res), err => console.log(err))
+	resolve('成功');
+}).then(
+	(res) => console.log(res),
+	(err) => console.log(err)
+);
